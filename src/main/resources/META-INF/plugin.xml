@@ -1,0 +1,81 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.cl.CamelCase</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>CamelCase</name>
+
+    <version>3.0.13</version>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="admin@ihawo.com" url="https://www.ihawo.com">L</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>
+      <![CDATA[
+          source: <a href="https://github.com/netnexus/camelcaseplugin" target="_blank">netnexus</a>
+          <br />
+          <br />
+          Switch easily between kebab-case, SNAKE_CASE, PascalCase, camelCase, snake_case or space case. See Edit menu or use ⇧ + ⌥ + U / Shift + Alt + U.
+          <br />
+           <br />
+          Please have a look at the preferences of this plugin:
+          You can disable some conversions or change their order.
+          <br />
+          <br />
+          If you find something is not working or missing, feel free to submit a PR on our GitHub repo.
+      ]]>
+    </description>
+
+    <change-notes><![CDATA[
+       <p>
+          Release 3.0.13:
+          <ul>
+            <li>change config to application</li>
+          </ul>
+      </p>
+      <br/>
+      <br/>
+      <p>
+          Release 3.0.12:
+          <ul>
+            <li>Bugfix: use standard config if com.intellij.openapi.project.Project is null</li>
+          </ul>
+      </p>
+
+      ]]>
+    </change-notes>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Build+Number+Ranges for description -->
+    <idea-version since-build="193.5233.102"/>
+
+    <!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    -->
+    <depends>com.intellij.modules.lang</depends>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="com.cl.camelcase.ToggleCamelCase" class="com.cl.camelcase.ToggleCamelCase"
+                text="Toggle Camel Case"
+                description="Switches between CamelCase, camelCase and snake_case">
+            <add-to-group group-id="EditSmartGroup" anchor="after" relative-to-action="EditorToggleCase"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="shift alt U"/>
+        </action>
+    </actions>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <applicationService
+                serviceImplementation="com.cl.camelcase.CamelCaseConfig"/>
+
+        <applicationConfigurable groupId="tools" displayName="Camel Case" id="com.cl.camelcase.CamelCasePluginConfigurable"
+                                 instance="com.cl.camelcase.CamelCasePluginConfigurable"/>
+    </extensions>
+</idea-plugin>
