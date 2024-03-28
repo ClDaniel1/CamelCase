@@ -4,6 +4,7 @@ import org.apache.commons.lang.WordUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,7 +30,8 @@ class Conversion {
                             boolean usePascalCase,
                             boolean useCamelCase,
                             boolean useLowerSnakeCase,
-                            String[] conversionList) {
+                            String[] conversionList,
+                            String replaceToQuotes) {
         String newText, appendText = "";
         boolean repeat = true;
         int iterations = 0;
@@ -48,7 +50,11 @@ class Conversion {
             boolean isLowerCase = text.equals(text.toLowerCase());
             boolean isUpperCase = text.equals(text.toUpperCase());
 
-            if (isLowerCase && text.contains("_")) {
+            if (Objects.equals(replaceToQuotes, "'") || Objects.equals(replaceToQuotes, "\"") || Objects.equals(replaceToQuotes, "`")) {
+                newText = Conversion.replaceQuotes(text, replaceToQuotes);
+                appendText = Conversion.replaceQuotes(appendText, replaceToQuotes);
+                repeat = false;
+            } else if (isLowerCase && text.contains("_")) {
                 // snake_case to space case
                 if (next == null) {
                     next = getNext(CONVERSION_LOWER_SNAKE_CASE, conversionList);
@@ -194,5 +200,12 @@ class Conversion {
             }
         }
         return camelCased.toString();
+    }
+
+    private static String replaceQuotes(String in, String Quotes) {
+        in = in.replace("'", Quotes);
+        in = in.replace("\"", Quotes);
+        in = in.replace("`", Quotes);
+        return in;
     }
 }

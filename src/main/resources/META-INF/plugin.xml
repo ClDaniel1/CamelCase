@@ -7,7 +7,7 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
     <name>CamelCase</name>
 
-    <version>3.0.13</version>
+    <version>3.0.15</version>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="admin@ihawo.com" url="https://www.ihawo.com">L</vendor>
@@ -32,6 +32,18 @@
     </description>
 
     <change-notes><![CDATA[
+        <p>
+          Release 3.0.15:
+          <ul>
+            <li>add '"` switch</li>
+          </ul>
+        </p>
+        <p>
+          Release 3.0.14:
+          <ul>
+            <li>add every case action</li>
+          </ul>
+        </p>
        <p>
           Release 3.0.13:
           <ul>
@@ -57,12 +69,81 @@
     <depends>com.intellij.modules.lang</depends>
 
     <actions>
+        <group
+                id="com.cl.camelcase.tool"
+                popup="true"
+                text="Camelcase Tools">
+            <add-to-group group-id="EditSmartGroup" anchor="after" relative-to-action="EditorToggleCase"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="after" relative-to-action="Copy.Paste.Special"/>
+            <!-- group children elements -->
+        </group>
+
         <!-- Add your actions here -->
         <action id="com.cl.camelcase.ToggleCamelCase" class="com.cl.camelcase.ToggleCamelCase"
                 text="Toggle Camel Case"
                 description="Switches between CamelCase, camelCase and snake_case">
             <add-to-group group-id="EditSmartGroup" anchor="after" relative-to-action="EditorToggleCase"/>
             <keyboard-shortcut keymap="$default" first-keystroke="shift alt U"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToCamelCase" class="com.cl.camelcase.ToCamelCase"
+                text="To camelCase"
+                description="Switches to camelCase">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToPascalCase" class="com.cl.camelcase.ToPascalCase"
+                text="To CamelCase"
+                description="Switches to CamelCase">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToCamelCaseWhite" class="com.cl.camelcase.ToSpaceCamelCase"
+                text="To Camel Case"
+                description="Switches to Camel Case">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToSnakeCase" class="com.cl.camelcase.ToSnakeCase"
+                text="To snake_case"
+                description="Switches to snake_case">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToUpSnakeCase" class="com.cl.camelcase.ToUpSnakeCase"
+                text="To SNAKE_CASE"
+                description="Switches to SNAKE_CASE">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToSpaceCase" class="com.cl.camelcase.ToSpaceCase"
+                text="To space case"
+                description="Switches to space case">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToKebabCase" class="com.cl.camelcase.ToKebabCase"
+                text="To kebab-case"
+                description="Switches to kebab-case">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToSingleQuotation" class="com.cl.camelcase.ToSingleQuotation"
+                text="To SingleQuotation"
+                description="Switches to SingleQuotation">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToDoubleQuotation" class="com.cl.camelcase.ToDoubleQuotation"
+                text="To DoubleQuotation"
+                description="Switches to DoubleQuotation">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
+        </action>
+
+        <action id="com.cl.camelcase.ToBacktick" class="com.cl.camelcase.ToBacktick"
+                text="To Backtick"
+                description="Switches to backtick">
+            <add-to-group group-id="com.cl.camelcase.tool" anchor="after" relative-to-action="EditorToggleCase"/>
         </action>
     </actions>
 

@@ -5,10 +5,11 @@ import com.intellij.openapi.editor.actions.TextComponentEditorAction;
 /**
  * Switch between snake_case, SNAKE_CASE, SnakeCase, snakeCase.
  */
-public class ToggleCamelCase extends TextComponentEditorAction {
+public class ToDoubleQuotation extends TextComponentEditorAction {
 
-    public ToggleCamelCase() {
-        super(new CamelCaseEditorActionHandler<>(""));
+    public ToDoubleQuotation() {
+        super(new CamelCaseEditorActionHandler<>("\""));
     }
+
 
 }
