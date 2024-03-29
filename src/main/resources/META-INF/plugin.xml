@@ -32,33 +32,30 @@
     </description>
 
     <change-notes><![CDATA[
-        <p>
-          Release 3.0.15:
-          <ul>
+        <div style="margin-bottom:5px">
+          <p>Release 3.0.15:</p>
+          <ul style="margin-top:5px">
             <li>add '"` switch</li>
           </ul>
-        </p>
-        <p>
-          Release 3.0.14:
-          <ul>
+        </div>
+        <div style="margin-bottom:5px">
+          <p>Release 3.0.14:</p>
+          <ul style="margin-top:5px">
             <li>add every case action</li>
           </ul>
-        </p>
-       <p>
-          Release 3.0.13:
-          <ul>
+        </div>
+       <div style="margin-bottom:5px">
+          <p>Release 3.0.13:</p>
+          <ul style="margin-top:5px">
             <li>change config to application</li>
           </ul>
-      </p>
-      <br/>
-      <br/>
-      <p>
-          Release 3.0.12:
-          <ul>
+      </div>
+      <div>
+          <p>Release 3.0.12:</p>
+          <ul style="margin-top:5px">
             <li>Bugfix: use standard config if com.intellij.openapi.project.Project is null</li>
           </ul>
-      </p>
-
+      </div>
       ]]>
     </change-notes>
 

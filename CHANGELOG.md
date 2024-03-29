@@ -2,6 +2,12 @@
 
 ## Changelog
 
+### Release 3.0.15:
+* add '"` switch
+
+### Release 3.0.14:
+* add every case action
+
 ### Release 3.0.13:
 * Update: change config to application
 
