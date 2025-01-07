@@ -1,6 +1,5 @@
 package com.cl.camelcase;
 
-import org.apache.commons.lang.WordUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -71,7 +70,23 @@ class Conversion {
                 if (next == null) {
                     next = getNext(CONVERSION_SPACE_CASE, conversionList);
                 } else {
-                    newText = WordUtils.capitalize(text);
+                    StringBuilder sb = new StringBuilder();
+                    boolean capitalizeNextChar = true;
+                    for (int i = 0; i < text.length(); i++) {
+                        char currentChar = text.charAt(i);
+                        if (Character.isLetterOrDigit(currentChar)) {
+                            if (capitalizeNextChar) {
+                                sb.append(Character.toUpperCase(currentChar));
+                                capitalizeNextChar = false;
+                            } else {
+                                sb.append(Character.toLowerCase(currentChar));
+                            }
+                        } else {
+                            sb.append(currentChar);
+                            capitalizeNextChar = true;
+                        }
+                    }
+                    newText = sb.toString();
                     if (next.equals(CONVERSION_PASCAL_CASE_SPACE)) {
                         repeat = !usePascalCaseWithSpace;
                         next = getNext(CONVERSION_PASCAL_CASE_SPACE, conversionList);
